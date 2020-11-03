@@ -1,0 +1,15 @@
+These files combine rides per hour and weather data per city. 
+
+References:
+Weather Data:
+Local Climatalogical Data, National Oceanic and Atmospheric Administration. https://www.ncdc.noaa.gov/cdo-web, 2019
+
+Bike Share Data:
+LA: Metro Bike Share.  https://bikeshare.metro.net/about/data, 2019.
+NYC: Citi Bike NYC. https://www.citibikenyc.com/system-data,2019.
+DC: Capital Bike Share. https://www.capitalbikeshare.com/system-data, 2019
+Chicago: Divvy  Bikes.    https://www.divvybikes.com/system-data,2019.
+Philadelphia: Indego. https://www.rideindego.com/about/data/, 2019.
+Boston: Bluebikes. bluebikes.com/system-data, 2019.
+
+
