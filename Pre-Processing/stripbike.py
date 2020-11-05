@@ -9,12 +9,12 @@ import pandas as pd
 import numpy as np
 from datetime import datetime as dt
 import datetime
-
 import csv
 
+#system is month or quarter depending on the city
+#number is 0 for month system or quarter number (1,2,3, or 4)
 def get_rph(bike_data_path, system, number):
     file_1 = pd.read_csv(bike_data_path,sep=",",usecols=['starttime'])
-    pd.DataFrame.to_csv(file_1, "testdata.csv", sep = ",")
 
     current_time = dt.strptime(file_1.iloc[0,0],'%Y/%m/%d %H:%M:%S')
     if system == 'month':
@@ -62,20 +62,21 @@ def get_rph(bike_data_path, system, number):
 
     return(final_vector)
 
-# final = np.vstack((get_rph('201901-bluebikes-tripdata.csv', 'month', 0),get_rph('201902-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201903-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201904-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201905-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201906-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201907-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201908-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201909-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201910-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201911-bluebikes-tripdata.csv','month',0)))
-# final = np.vstack((final,get_rph('201912-bluebikes-tripdata.csv','month',0)))
-#
+#Combine all the files for each city
 
-#get_rph('ORIGINALDATA/TESTER1.csv','month',0)
+final = np.vstack((get_rph('201901-bluebikes-tripdata.csv', 'month', 0),get_rph('201902-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201903-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201904-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201905-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201906-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201907-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201908-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201909-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201910-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201911-bluebikes-tripdata.csv','month',0)))
+final = np.vstack((final,get_rph('201912-bluebikes-tripdata.csv','month',0)))
+
+
 final_nyc = np.vstack((get_rph('201901-citibike-tripdata.csv','month',0),get_rph('201902-citibike-tripdata.csv','month',0)))
 final_nyc = np.vstack((final_nyc,get_rph('201903-citibike-tripdata.csv','month',0)))
 final_nyc = np.vstack((final_nyc,get_rph('201904-citibike-tripdata.csv','month',0)))
@@ -88,35 +89,37 @@ final_nyc = np.vstack((final_nyc,get_rph('201910-citibike-tripdata.csv','month',
 final_nyc = np.vstack((final_nyc,get_rph('201911-citibike-tripdata.csv','month',0)))
 final_nyc = np.vstack((final_nyc,get_rph('201912-citibike-tripdata.csv','month',0)))
 
-# final_LA = np.vstack((get_rph('LA-metro-bike-share-trips-2019-q1.csv','quarter',1),get_rph('LA-metro-bike-share-trips-2019-q2.csv','quarter',2)))
-# final_LA = np.vstack((final_LA,get_rph('LA-metro-bike-share-trips-2019-q3.csv','quarter',3)))
-# final_LA = np.vstack((final_LA,get_rph('LA-metro-bike-share-trips-2019-q4.csv','quarter',4)))
-# #
-# final_DC = np.vstack((get_rph('201901-capitalbikeshare-tripdata.csv','month',0),get_rph('201902-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201903-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201904-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201905-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201906-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201907-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201908-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201909-capitalbikeshare-tripdata.csv.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201910-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201911-capitalbikeshare-tripdata.csv','month',0)))
-# final_DC = np.vstack((final_DC,get_rph('201912-capitalbikeshare-tripdata.csv','month',0)))
-
-# final_philly = np.vstack((get_rph('indego-trips-2019-q1.csv','quarter',1),get_rph('indego-trips-2019-q2.csv','quarter',2)))
-# final_philly = np.vstack((final_philly,get_rph('indego-trips-2019-q3.csv','quarter',3)))
-# final_philly = np.vstack((final_philly,get_rph('indego-trips-2019-q4.csv','quarter',4)))
+final_LA = np.vstack((get_rph('LA-metro-bike-share-trips-2019-q1.csv','quarter',1),get_rph('LA-metro-bike-share-trips-2019-q2.csv','quarter',2)))
+final_LA = np.vstack((final_LA,get_rph('LA-metro-bike-share-trips-2019-q3.csv','quarter',3)))
+final_LA = np.vstack((final_LA,get_rph('LA-metro-bike-share-trips-2019-q4.csv','quarter',4)))
 #
-# final_chicago = np.vstack((get_rph('metro-bike-share-trips-2019-q1.csv','quarter',1),get_rph('metro-bike-share-trips-2019-q2.csv','quarter',2)))
-# final_chicago = np.vstack((final_chicago,get_rph('metro-bike-share-trips-2019-q3.csv','quarter',3)))
-# final_chicago = np.vstack((final_chicago,get_rph('metro-bike-share-trips-2019-q4.csv','quarter',4)))
-# np.savetxt("BOSTON.csv", final, delimiter = ",")
+final_DC = np.vstack((get_rph('201901-capitalbikeshare-tripdata.csv','month',0),get_rph('201902-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201903-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201904-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201905-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201906-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201907-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201908-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201909-capitalbikeshare-tripdata.csv.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201910-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201911-capitalbikeshare-tripdata.csv','month',0)))
+final_DC = np.vstack((final_DC,get_rph('201912-capitalbikeshare-tripdata.csv','month',0)))
+
+final_philly = np.vstack((get_rph('indego-trips-2019-q1.csv','quarter',1),get_rph('indego-trips-2019-q2.csv','quarter',2)))
+final_philly = np.vstack((final_philly,get_rph('indego-trips-2019-q3.csv','quarter',3)))
+final_philly = np.vstack((final_philly,get_rph('indego-trips-2019-q4.csv','quarter',4)))
+
+final_chicago = np.vstack((get_rph('metro-bike-share-trips-2019-q1.csv','quarter',1),get_rph('metro-bike-share-trips-2019-q2.csv','quarter',2)))
+final_chicago = np.vstack((final_chicago,get_rph('metro-bike-share-trips-2019-q3.csv','quarter',3)))
+final_chicago = np.vstack((final_chicago,get_rph('metro-bike-share-trips-2019-q4.csv','quarter',4)))
+
+#Output each city final rides per hour
+np.savetxt("BOSTON.csv", final, delimiter = ",")
 np.savetxt("NYC.csv", final_nyc, delimiter = ",")
-# np.savetxt("PHILADELPHIA.csv", final_philly, delimiter = ",")
-#np.savetxt("LA.csv", final_LA, delimiter = ",")
-#np.savetxt("DC.csv", final_DC, delimiter = ",")
-# np.savetxt("CHICAGO.csv", final_chicago, delimiter = ",")
+np.savetxt("PHILADELPHIA.csv", final_philly, delimiter = ",")
+np.savetxt("LA.csv", final_LA, delimiter = ",")
+np.savetxt("DC.csv", final_DC, delimiter = ",")
+np.savetxt("CHICAGO.csv", final_chicago, delimiter = ",")
 
 
 
