@@ -1,3 +1,10 @@
+"""
+@author Kelli Waterman
+This python code is used to combine bike share data from publicly available bike share sources. 
+Pre-steps necessary include renaming 'starttime' column for some cities, reformatting starttime to '%Y/%m/%d %H:%M:%S'
+and sorting by date-time.
+"""
+
 import pandas as pd
 import numpy as np
 from datetime import datetime as dt
