@@ -1,3 +1,8 @@
+"""
+@author Kelli Waterman
+This file is used to combine new data together, and can be used to do city data or overall data
+"""
+
 import pandas as pd
 import numpy as np
 
